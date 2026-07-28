@@ -14,28 +14,32 @@
 
 <f:section name="Content">
 
-    <p>
-        <strong>Phone:</strong><br>
-        {data.phone}
-    </p>
+    <strong>Slides</strong>
 
-    <p>
-        <strong>Email:</strong><br>
-        {data.email}
-    </p>
+    <ul class="mt-2">
 
-    <f:if condition="{data.address}">
-        <p>
-            <strong>Address:</strong><br>
-            <f:format.nl2br>{data.address}</f:format.nl2br>
-        </p>
-    </f:if>
+        <f:for each="{data.slides}" as="slide">
 
-    <f:if condition="{data.map}">
-        <p>
-            <em>Map configured</em>
-        </p>
-    </f:if>
+            <li>
+
+                <f:if condition="{slide.image}">
+                    <f:for each="{slide.image}" as="image">
+                        <f:image image="{image}" width="400" class="me-2 rounded" />
+                    </f:for>
+                </f:if>
+
+                <strong>{slide.caption}</strong>
+
+                <f:if condition="{slide.link.url}">
+                        <strong class="ms-4">Link: </strong>
+                        <f:link.typolink parameter="{slide.link}" target="_blank">{slide.link.url}</f:link.typolink>
+                </f:if>
+
+            </li>
+
+        </f:for>
+
+    </ul>
 
 </f:section>
 
