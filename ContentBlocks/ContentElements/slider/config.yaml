@@ -1,0 +1,30 @@
+name: nitsan-ai/slider
+typeName: nitsanai_slider
+group: package demo
+prefixFields: true
+prefixType: full
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: slides
+    type: Collection
+    label: Slides
+
+    fields:
+      - identifier: image
+        type: File
+        allowed: common-image-types
+        maxitems: 1
+
+      - identifier: caption
+        type: Text
+
+      - identifier: link
+        type: Link
+        label: Slide link
+        allowedTypes:
+          - page
+          - url
+          - file

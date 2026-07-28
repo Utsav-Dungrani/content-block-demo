@@ -1,0 +1,36 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+    <cb:link.editRecord uid="{data.uid}" table="{data.mainType}">
+        {data.header}
+    </cb:link.editRecord>
+</f:section>
+
+<f:section name="Content">
+
+    <p>
+        <strong>Description</strong><br>
+        <f:format.stripTags>{data.description}</f:format.stripTags>
+    </p>
+
+    <strong>FAQ Items</strong>
+
+    <div class="mt-2">
+        <f:for each="{data.faq_items}" as="faq">
+            <div class="mb-3 border-bottom pb-2">
+                <strong>Q:</strong> {faq.question}<br>
+                <strong>A:</strong>
+                <f:format.stripTags>{faq.answer}</f:format.stripTags>
+            </div>
+        </f:for>
+    </div>
+
+</f:section>
+
+</html>

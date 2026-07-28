@@ -1,0 +1,27 @@
+name: nitsan-ai/faq
+typeName: nitsanai_faq
+group: package demo
+prefixFields: true
+prefixType: full
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: description
+    type: Textarea
+    enableRichtext: true
+
+  - identifier: faq_items
+    type: Collection
+    label: FAQ Items
+
+    fields:
+      - identifier: question
+        type: Text
+        required: true
+
+      - identifier: answer
+        type: Textarea
+        enableRichtext: true
+        required: true

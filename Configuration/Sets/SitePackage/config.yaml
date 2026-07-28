@@ -1,0 +1,4 @@
+name: nitsan-ai/demo
+label: 'Demo'
+dependencies:
+  - bootstrap-package/full

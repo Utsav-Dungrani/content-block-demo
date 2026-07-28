@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="plaintext" original="labels.xlf" source-language="en" date="2026-07-27T10:50:41+00:00" product-name="nitsan-ai/faq">
+    <header/>
+    <body>
+      <trans-unit id="title">
+        <source>FAQ</source>
+      </trans-unit>
+      <trans-unit id="description">
+        <source>Description for Content Element nitsan-ai/faq</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

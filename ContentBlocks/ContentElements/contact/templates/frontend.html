@@ -1,0 +1,64 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<section class="container py-5">
+
+    <f:if condition="{data.header}">
+        <div class="text-center mb-5">
+            <h2>{data.header}</h2>
+        </div>
+    </f:if>
+
+    <div class="row g-4">
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">Contact Information</h4>
+
+                    <p>
+                        <strong>Phone</strong><br>
+                        <a href="tel:{data.phone}">
+                            {data.phone}
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Email</strong><br>
+                        <a href="mailto:{data.email}">
+                            {data.email}
+                        </a>
+                    </p>
+
+                    <f:if condition="{data.address}">
+                        <p>
+                            <strong>Address</strong><br>
+                            <f:format.nl2br>{data.address}</f:format.nl2br>
+                        </p>
+                    </f:if>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-7">
+
+            <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                <f:format.raw>{data.map}</f:format.raw>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</html>

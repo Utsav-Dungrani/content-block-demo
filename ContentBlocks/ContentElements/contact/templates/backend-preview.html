@@ -1,0 +1,42 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+    <cb:link.editRecord uid="{data.uid}" table="{data.mainType}">
+        {data.header}
+    </cb:link.editRecord>
+</f:section>
+
+<f:section name="Content">
+
+    <p>
+        <strong>Phone:</strong><br>
+        {data.phone}
+    </p>
+
+    <p>
+        <strong>Email:</strong><br>
+        {data.email}
+    </p>
+
+    <f:if condition="{data.address}">
+        <p>
+            <strong>Address:</strong><br>
+            <f:format.nl2br>{data.address}</f:format.nl2br>
+        </p>
+    </f:if>
+
+    <f:if condition="{data.map}">
+        <div class="ratio ratio-4x3 mt-3">
+            <f:format.raw>{data.map}</f:format.raw>
+        </div>
+    </f:if>
+
+</f:section>
+
+</html>

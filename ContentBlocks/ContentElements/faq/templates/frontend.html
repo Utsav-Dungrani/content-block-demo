@@ -1,0 +1,61 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<section class="container py-5">
+
+    <f:if condition="{data.header}">
+        <div class="text-center mb-3">
+            <h2 class="fw-bold">{data.header}</h2>
+        </div>
+    </f:if>
+
+    <f:if condition="{data.description}">
+        <div class="text-center text-muted mb-5">
+            <f:format.html>{data.description}</f:format.html>
+        </div>
+    </f:if>
+
+    <div class="accordion" id="faqAccordion-{data.uid}">
+
+        <f:for each="{data.faq_items}" as="faq" iteration="iterator">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header" id="heading-{data.uid}-{iterator.cycle}">
+                    <button
+                        class="accordion-button <f:if condition='{iterator.isFirst}'><f:else>collapsed</f:else></f:if>"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse-{data.uid}-{iterator.cycle}"
+                        aria-expanded="{f:if(condition: iterator.isFirst, then: 'true', else: 'false')}"
+                        aria-controls="collapse-{data.uid}-{iterator.cycle}">
+
+                        {faq.question}
+
+                    </button>
+                </h2>
+
+                <div
+                    id="collapse-{data.uid}-{iterator.cycle}"
+                    class="accordion-collapse collapse <f:if condition='{iterator.isFirst}'>show</f:if>"
+                    aria-labelledby="heading-{data.uid}-{iterator.cycle}"
+                    data-bs-parent="#faqAccordion-{data.uid}">
+
+                    <div class="accordion-body">
+                        <f:format.html>{faq.answer}</f:format.html>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </f:for>
+
+    </div>
+
+</section>
+
+</html>

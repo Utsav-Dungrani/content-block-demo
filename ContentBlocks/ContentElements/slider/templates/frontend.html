@@ -1,0 +1,91 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<section class="container py-5">
+
+    <f:if condition="{data.header}">
+        <h2 class="text-center mb-4">{data.header}</h2>
+    </f:if>
+
+    <div id="slider-{data.uid}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" data-bs-touch="true">
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <f:for each="{data.slides}" as="slide" iteration="iterator">
+                <button
+                    type="button"
+                    data-bs-target="#slider-{data.uid}"
+                    data-bs-slide-to="{iterator.index}"
+                    class="<f:if condition='{iterator.isFirst}'>active</f:if>"
+                    aria-current="<f:if condition='{iterator.isFirst}'>true</f:if>"
+                    aria-label="Slide {iterator.cycle}">
+                </button>
+            </f:for>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+
+            <f:for each="{data.slides}" as="slide" iteration="iterator">
+
+                <div class="carousel-item <f:if condition='{iterator.isFirst}'>active</f:if>">
+
+                    <f:for each="{slide.image}" as="image">
+                        <f:if condition="{slide.link.url}">
+                            <f:then>
+                                <f:link.typolink parameter="{slide.link}" target="_blank" additionalAttributes="{rel: 'noopener noreferrer'}">
+                                    <f:image image="{image}" class="d-block w-100 rounded h-100" />
+                                </f:link.typolink>
+                            </f:then>
+                            <f:else>
+                                <f:image image="{image}" class="d-block w-100 rounded h-100" />
+                            </f:else>
+                        </f:if>
+                    </f:for>
+
+                    <f:if condition="{slide.caption}">
+                        <!-- Added style="pointer-events: none;" so clicks pass through to the buttons -->
+                        <div class="carousel-caption d-none d-md-flex flex-column align-items-center justify-content-center top-0 bottom-0 start-0 end-0" style="pointer-events: none;">
+                            <!-- Added style="pointer-events: auto;" so the inner box is still interactive -->
+                            <div class="bg-secondary bg-opacity-75 rounded p-3 text-center" style="pointer-events: auto;">
+                                <h5 class="mb-0 text-white">{slide.caption}</h5>
+                            </div>
+                        </div>
+                    </f:if>
+
+                </div>
+
+            </f:for>
+
+        </div>
+
+        <!-- Previous -->
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#slider-{data.uid}"
+            data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon shadow rounded-circle p-4"></span>
+
+        </button>
+
+        <!-- Next -->
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#slider-{data.uid}"
+            data-bs-slide="next">
+
+            <span class="carousel-control-next-icon shadow rounded-circle p-4"></span>
+
+        </button>
+
+    </div>
+
+</section>
+
+</html>

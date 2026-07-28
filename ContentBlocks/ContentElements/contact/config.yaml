@@ -1,0 +1,33 @@
+name: nitsan-ai/contact
+typeName: nitsanai_contact
+group: package demo
+prefixFields: true
+prefixType: full
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: phone
+    type: Text
+    label: Phone Number
+    required: true
+    min: 10
+    max: 10
+    is_in: '0123456789'
+    eval: 'trim,is_in'
+
+  - identifier: email
+    type: Email
+    label: Email Address
+    required: true
+
+  - identifier: address
+    type: Textarea
+    label: Address
+    required: true
+
+  - identifier: map
+    type: Textarea
+    label: Google Map Embed (iframe)
+    required: true
